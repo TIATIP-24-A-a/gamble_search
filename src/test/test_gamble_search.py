@@ -1,5 +1,3 @@
-import random
-
 import pytest
 from src.gamble_search import gamble_search
 
@@ -51,5 +49,19 @@ def test_gamble_should_return_value_error_if_target_not_a_string():
     ]
 
     for invalid_target in invalid_targets:
-        with pytest.raises(ValueError):
+        with pytest.raises(TypeError):
             gamble_search(invalid_target, "cherry")
+
+def test_gamble_should_return_type_error_if_array_is_not_an_array():
+    invalid_arrays = [
+        True,
+        None,
+        1,
+        2.45,
+        [],
+        {}
+    ]
+
+    for invalid_array in invalid_arrays:
+        with pytest.raises(TypeError):
+            gamble_search(invalid_array, "cherry")
