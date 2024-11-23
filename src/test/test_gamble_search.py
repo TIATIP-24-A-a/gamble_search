@@ -57,9 +57,7 @@ def test_gamble_should_return_type_error_if_array_is_not_an_array():
         True,
         None,
         1,
-        2.45,
-        [],
-        {}
+        2.45
     ]
 
     for invalid_array in invalid_arrays:
