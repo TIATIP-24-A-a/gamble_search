@@ -18,3 +18,6 @@ def test_gamble_search_should_return_correct_answer_with_small_sample(small_arra
 
 def test_gamble_search_should_return_correct_answer_with_medium_sample(medium_array):
     assert gamble_search(medium_array, "item_50") == 50
+
+def test_gamble_search_should_return_correct_answer_with_large_sample(large_array):
+    assert gamble_search(large_array, "item_785302") == 785302
