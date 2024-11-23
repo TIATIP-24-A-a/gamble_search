@@ -7,11 +7,15 @@ def small_array():
 
 @pytest.fixture
 def medium_array():
-    return [f"item_{i}" for i in range(100)]
+    max_value = 99
+    num_digits = len(str(max_value))
+    return [f"item_{i:0{num_digits}d}" for i in range(100)]
 
 @pytest.fixture
 def large_array():
-    return [f"item_{i}" for i in range(1000000)]
+    max_value = 999999
+    num_digits = len(str(max_value))
+    return [f"item_{i:0{num_digits}d}" for i in range(1000000)]
 
 def test_gamble_search_should_return_correct_answer_with_small_sample(small_array):
     assert gamble_search(small_array, "cherry") == 2
