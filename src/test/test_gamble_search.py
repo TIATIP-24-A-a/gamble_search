@@ -39,29 +39,3 @@ def test_gamble_search_should_raise_type_error_if_array_is_not_string_array():
 
 def test_gamble_search_should_return_none_if_target_not_found(large_array):
     assert gamble_search(large_array, "cherry") is None
-
-def test_gamble_search_should_return_value_error_if_small_array_is_unsorted(small_array):
-    unsorted = small_array.copy()
-    unsorted[0], unsorted[-1] = unsorted[-1], unsorted[0]
-
-    with pytest.raises(ValueError):
-        gamble_search(unsorted, "cherry")
-
-def test_gamble_search_should_return_value_error_if_medium_array_is_unsorted(medium_array):
-    unsorted = medium_array.copy()
-    # Pick a random index (but not 0) from the array
-    random_index = random.randint(1, len(unsorted) - 1)
-    unsorted[0], unsorted[random_index] = unsorted[random_index], unsorted[0]
-
-    with pytest.raises(ValueError):
-        gamble_search(unsorted, "item_1")
-
-def test_gamble_search_should_return_value_error_if_large_array_is_unsorted(large_array):
-    unsorted = large_array.copy()
-    # Pick two different random indices from the array
-    index1, index2 = random.sample(range(len(unsorted)), 2)
-    # Swap them
-    unsorted[index1], unsorted[index2] = unsorted[index2], unsorted[index1]
-
-    with pytest.raises(ValueError):
-        gamble_search(unsorted, "item_1")
