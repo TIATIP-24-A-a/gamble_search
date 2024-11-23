@@ -21,3 +21,16 @@ def test_gamble_search_should_return_correct_answer_with_medium_sample(medium_ar
 
 def test_gamble_search_should_return_correct_answer_with_large_sample(large_array):
     assert gamble_search(large_array, "item_785302") == 785302
+
+def test_gamble_search_should_raise_type_error_if_array_is_not_string_array():
+    invalid_arrays = [
+        [1, "two", "three"],
+        [3.14, "two", "three"],
+        [None, "two", "three"],
+        [{}, "two", "three"],
+        [[], "two", "three"]
+    ]
+
+    for invalid_array in invalid_arrays:
+        with pytest.raises(ValueError):
+            gamble_search(invalid_array, "three")
