@@ -56,4 +56,12 @@ def test_gamble_search_should_return_value_error_if_medium_array_is_unsorted(med
     with pytest.raises(ValueError):
         gamble_search(unsorted, "item_1")
 
+def test_gamble_search_should_return_value_error_if_large_array_is_unsorted(large_array):
+    unsorted = large_array.copy()
+    # Pick two different random indices from the array
+    index1, index2 = random.sample(range(len(unsorted)), 2)
+    # Swap them
+    unsorted[index1], unsorted[index2] = unsorted[index2], unsorted[index1]
 
+    with pytest.raises(ValueError):
+        gamble_search(unsorted, "item_1")
