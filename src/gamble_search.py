@@ -1,7 +1,9 @@
 import random
 
 def gamble_search(array: list[str], target: str) -> int | None:
-    if not isinstance(array, list) or not all(isinstance(item, str) for item in array):
+    if not isinstance(array, list):
+        raise TypeError("array must be of type list")
+    if not all(isinstance(item, str) for item in array):
         raise ValueError("array must be a list of strings")
     if not isinstance(target, str):
         raise TypeError("target must be a string")
