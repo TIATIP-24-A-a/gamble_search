@@ -47,4 +47,13 @@ def test_gamble_search_should_return_value_error_if_small_array_is_unsorted(smal
     with pytest.raises(ValueError):
         gamble_search(unsorted, "cherry")
 
+def test_gamble_search_should_return_value_error_if_medium_array_is_unsorted(medium_array):
+    unsorted = medium_array.copy()
+    # Pick a random index (but not 0) from the array
+    random_index = random.randint(1, len(unsorted) - 1)
+    unsorted[0], unsorted[random_index] = unsorted[random_index], unsorted[0]
+
+    with pytest.raises(ValueError):
+        gamble_search(unsorted, "item_1")
+
 
