@@ -34,3 +34,6 @@ def test_gamble_search_should_raise_type_error_if_array_is_not_string_array():
     for invalid_array in invalid_arrays:
         with pytest.raises(ValueError):
             gamble_search(invalid_array, "three")
+
+def test_gamble_search_should_return_none_if_target_not_found(large_array):
+    assert gamble_search(large_array, "cherry") is None
