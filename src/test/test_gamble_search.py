@@ -1,3 +1,5 @@
+import random
+
 import pytest
 from src.gamble_search import gamble_search
 
@@ -37,3 +39,12 @@ def test_gamble_search_should_raise_type_error_if_array_is_not_string_array():
 
 def test_gamble_search_should_return_none_if_target_not_found(large_array):
     assert gamble_search(large_array, "cherry") is None
+
+def test_gamble_search_should_return_value_error_if_small_array_is_unsorted(small_array):
+    unsorted = small_array.copy()
+    unsorted[0], unsorted[-1] = unsorted[-1], unsorted[0]
+
+    with pytest.raises(ValueError):
+        gamble_search(unsorted, "cherry")
+
+
