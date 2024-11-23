@@ -1,6 +1,9 @@
 import random
 
 def gamble_search(array: list[str], target: str) -> int:
+    if not isinstance(array, list) or not all(isinstance(item, str) for item in array):
+        raise ValueError("array must be a list of strings")
+
     left, right = 0, len(array) - 1
 
     while left <= right:
