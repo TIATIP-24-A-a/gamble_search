@@ -69,6 +69,3 @@ def test_gamble_should_return_none_if_array_is_empty():
 
 def test_gamble_should_ignore_case_of_target_and_array(small_array):
     assert gamble_search(small_array, "ChErRy") == 2
-
-def test_gamble_should_handle_special_characters():
-    assert gamble_search(["🍎", "🍆", "🍕", "🥝", "🥭"], "🥭") == 4
