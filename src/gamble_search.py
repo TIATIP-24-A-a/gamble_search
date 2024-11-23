@@ -8,13 +8,16 @@ def gamble_search(array: list[str], target: str) -> int | None:
     if not isinstance(target, str):
         raise TypeError("target must be a string")
 
-    left, right = 0, len(array) - 1
+    target_lower = target.lower()
+    lower_array = [item.lower() for item in array]  # Konvertiere das gesamte Array in Kleinbuchstaben
+
+    left, right = 0, len(lower_array) - 1
 
     while left <= right:
         pivot = random.randint(left, right)
-        if array[pivot] == target:
+        if lower_array[pivot] == target_lower:
             return pivot
-        elif array[pivot] < target:
+        elif lower_array[pivot] < target_lower:
             left = pivot + 1
         else:
             right = pivot - 1
