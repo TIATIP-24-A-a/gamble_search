@@ -63,3 +63,10 @@ def test_gamble_should_return_type_error_if_array_is_not_an_array():
     for invalid_array in invalid_arrays:
         with pytest.raises(TypeError):
             gamble_search(invalid_array, "cherry")
+
+def test_gamble_should_return_none_if_array_is_empty():
+    assert gamble_search([], "cherry") is None
+
+def test_gamble_should_ignore_case_of_target_and_array(small_array):
+    assert gamble_search(small_array, "ChErRy") == 2
+
