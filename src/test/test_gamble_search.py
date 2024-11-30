@@ -12,6 +12,12 @@ def medium_array():
     return [f"item_{i:0{num_digits}d}" for i in range(100)]
 
 @pytest.fixture
+def large_array():
+    max_value = 9999
+    num_digits = len(str(max_value))
+    return [f"item_{i:0{num_digits}d}" for i in range(10000)]
+
+@pytest.fixture
 def very_large_array():
     max_value = 999999
     num_digits = len(str(max_value))
