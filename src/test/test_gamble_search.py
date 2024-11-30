@@ -27,7 +27,7 @@ class TestGambleSearchPerformance:
     def test_found_item_performance(self, benchmark, medium_array):
 
         def run_search():
-            return gamble_search(medium_array, "item_500")  # Search for middle-ish item
+            return gamble_search(medium_array, "item_50")  # Search for middle-ish item
 
         result = benchmark(run_search)
         assert result is not None
