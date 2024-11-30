@@ -1,5 +1,3 @@
-import random
-
 import pytest
 from src.gamble_search import gamble_search
 
