@@ -33,7 +33,7 @@ def run_tests():
         os.chdir(git_root)
 
         # Run pytest
-        result = subprocess.run([sys.executable, '-m "not benchmark"', 'pytest'],
+        result = subprocess.run([sys.executable, '-m', 'pytest', '-m', 'not benchmark'],
                               capture_output=True,
                               text=True)
 
