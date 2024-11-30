@@ -22,4 +22,4 @@ pytest
 ## Requirements
 
 - Python 3.6 or higher
-- pytest (`pip install requirements.txt`)
+- pytest (`pip install -r requirements.txt`)
