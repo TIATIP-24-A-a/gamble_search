@@ -1,5 +1,5 @@
 # Gamble Search
-Like Binary search, except it picks a random pivot instead of splitting the array in the middle.
+Like Binary search, except it picks a random pivot instead of splitting the array in the middle. It could potentially get the right target on the first try, or run 4-5 times longer than a regular binary search but who cares about that.
 
 # Git Hooks Setup
 
@@ -22,4 +22,4 @@ pytest
 ## Requirements
 
 - Python 3.6 or higher
-- pytest (`pip install pytest`)
+- pytest (`pip install requirements.txt`)
