@@ -4,18 +4,15 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Read the benchmark data
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 json_path = os.path.join(project_root, 'data', 'output.json')
 
 with open(json_path) as f:
     data = json.load(f)
 
-# Extract sizes and times
 results = []
 for bench in data['benchmarks']:
     if 'array_performance' in bench['name']:
-        # Extract array size from test name or group
         if 'small' in bench['name']:
             size = 3
         elif 'medium' in bench['name']:
@@ -30,36 +27,29 @@ for bench in data['benchmarks']:
             'time': bench['stats']['mean']
         })
 
-# Sort by size
 results.sort(key=lambda x: x['size'])
 
-# Input sizes from your tests
 sizes = np.array([3, 100, 10000, 1000000])
 
-# Your actual measured times (in microseconds)
 measured_times = np.array([1.6, 12.5, 776.5, 101057.1])
 
 plt.figure(figsize=(12, 8))
-plt.style.use('bmh')  # Using a built-in style instead of seaborn
+plt.style.use('bmh')
 
-# Plot complexities
 x = np.linspace(1, len(sizes), 100)
 plt.plot(range(len(sizes)), measured_times / measured_times[0], 'bo-', label='Gamble Search', linewidth=2, markersize=8)
 plt.plot(x, x, 'g--', label='O(n) - Linear', alpha=0.7)
 plt.plot(x, x * np.log(x), 'r--', label='O(n log n)', alpha=0.7)
 plt.plot(x, x**2, 'y--', label='O(n²) - Quadratic', alpha=0.7)
 
-# Customize the plot
 plt.grid(True, alpha=0.3)
 plt.xlabel('Input Size', fontsize=12)
 plt.ylabel('Relative Time', fontsize=12)
 plt.title('Gamble Search Time Complexity', fontsize=14, pad=20)
 plt.legend(fontsize=10)
 
-# Use the actual array sizes as x-axis labels
 plt.xticks(range(len(sizes)), [f'n={size}' for size in sizes], rotation=45)
 
-# Add annotations for measured points
 for i, (size, time) in enumerate(zip(sizes, measured_times)):
     plt.annotate(f'{time:.1f}µs',
                 (i, time / measured_times[0]),
@@ -71,7 +61,6 @@ for i, (size, time) in enumerate(zip(sizes, measured_times)):
 plt.tight_layout()
 plt.savefig('data/big_o_comparison.png', dpi=300, bbox_inches='tight')
 
-# Print analysis
 print("\nTime increase factors:")
 for i in range(1, len(sizes)):
     size_factor = sizes[i] / sizes[i-1]
