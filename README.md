@@ -7,7 +7,7 @@ This repository uses Git hooks to ensure code quality by running tests before ea
 
 After cloning the repository, run:
 ```bash
-python install_hooks.py
+python scripts/install_git_hooks.py
 ```
 
 This will install a pre-push hook that runs your tests automatically before each push. If any tests fail, the push will be blocked.
