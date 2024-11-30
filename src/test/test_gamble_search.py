@@ -34,6 +34,24 @@ def create_test_array(size: int) -> list[str]:
 )
 class TestGambleSearchPerformance:
 
+    @pytest.mark.parametrize("size", [
+        10,
+        100,
+        1000,
+        10000,
+        100000,
+        1000000
+    ])
+    def test_array_performance(self, benchmark, size):
+        array = create_test_array(size)
+        target = f"item_{size // 2}"  # Search for middle item
+
+        def run_search():
+            return gamble_search(array, target)
+
+        result = benchmark(run_search)
+        assert result is not None
+
     def test_found_item_performance(self, benchmark, medium_array):
 
         def run_search():
