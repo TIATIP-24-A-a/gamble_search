@@ -32,6 +32,14 @@ class TestGambleSearchPerformance:
         result = benchmark(run_search)
         assert result is not None
 
+    def test_missing_item_performance(self, benchmark, medium_array):
+
+        def run_search():
+            return gamble_search(medium_array, "nonexistent")
+
+        result = benchmark(run_search)
+        assert result is None
+
 def test_gamble_search_should_return_correct_answer_with_small_sample(small_array):
     assert gamble_search(small_array, "cherry") == 2
 
