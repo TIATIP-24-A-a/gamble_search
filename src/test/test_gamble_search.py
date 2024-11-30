@@ -17,6 +17,16 @@ def large_array():
     num_digits = len(str(max_value))
     return [f"item_{i:0{num_digits}d}" for i in range(1000000)]
 
+@pytest.mark.benchmark(
+    group="gamble-search",
+    min_rounds=100,
+    warmup=True
+)
+class TestGambleSearchPerformance:
+
+    def performance_test(self):
+        return None
+
 def test_gamble_search_should_return_correct_answer_with_small_sample(small_array):
     assert gamble_search(small_array, "cherry") == 2
 
