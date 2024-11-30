@@ -1,3 +1,5 @@
+![Gamble Search Image](docs/gamble_search.png)
+
 # Gamble Search
 Like Binary search, except it picks a random pivot instead of splitting the array in the middle. It could potentially get the right target on the first try, or run 4-5 times longer than a regular binary search but who cares about that.
 
