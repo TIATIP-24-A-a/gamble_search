@@ -29,7 +29,7 @@ def create_test_array(size: int) -> list[str]:
 
 @pytest.mark.benchmark(
     group="gamble-search",
-    min_rounds=1000,
+    min_rounds=100,
     warmup=True
 )
 class TestGambleSearchPerformance:
@@ -44,7 +44,8 @@ class TestGambleSearchPerformance:
     ])
     def test_array_performance(self, benchmark, size):
         array = create_test_array(size)
-        target = f"item_{size // 2}"  # Search for middle item
+        num_digits = len(str(size))
+        target = f"item_{(size // 2):0{num_digits}d}"
 
         def run_search():
             return gamble_search(array, target)
