@@ -23,6 +23,10 @@ def very_large_array():
     num_digits = len(str(max_value))
     return [f"item_{i:0{num_digits}d}" for i in range(1000000)]
 
+def create_test_array(size: int) -> list[str]:
+    num_digits = len(str(size))
+    return [f"item_{i:0{num_digits}d}" for i in range(size)]
+
 @pytest.mark.benchmark(
     group="gamble-search",
     min_rounds=1000,
@@ -45,34 +49,6 @@ class TestGambleSearchPerformance:
 
         result = benchmark(run_search)
         assert result is None
-
-    def test_small_array_performance(self, benchmark, small_array):
-        def run_search():
-            return gamble_search(small_array, "cherry")
-
-        result = benchmark(run_search)
-        assert result is not None
-
-    def test_medium_array_performance(self, benchmark, medium_array):
-        def run_search():
-            return gamble_search(medium_array, "item_50")
-
-        result = benchmark(run_search)
-        assert result is not None
-
-    def test_large_array_performance(self, benchmark, large_array):
-        def run_search():
-            return gamble_search(large_array, "item_5000")
-
-        result = benchmark(run_search)
-        assert result is not None
-
-    def test_very_large_array_performance(self, benchmark, very_large_array):
-        def run_search():
-            return gamble_search(very_large_array, "item_500000")
-
-        result = benchmark(run_search)
-        assert result is not None
 
 def test_gamble_search_should_return_correct_answer_with_small_sample(small_array):
     assert gamble_search(small_array, "cherry") == 2
