@@ -60,6 +60,13 @@ class TestGambleSearchPerformance:
         result = benchmark(run_search)
         assert result is not None
 
+    def test_large_array_performance(self, benchmark, large_array):
+        def run_search():
+            return gamble_search(large_array, "item_5000")
+
+        result = benchmark(run_search)
+        assert result is not None
+
     def test_very_large_array_performance(self, benchmark, very_large_array):
         def run_search():
             return gamble_search(very_large_array, "item_500000")
