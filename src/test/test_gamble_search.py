@@ -29,7 +29,7 @@ def create_test_array(size: int) -> list[str]:
 
 @pytest.mark.benchmark(
     group="gamble-search",
-    min_rounds=100,
+    min_rounds=10000,
     warmup=True
 )
 class TestGambleSearchPerformance:
