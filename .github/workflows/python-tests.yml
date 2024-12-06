@@ -25,4 +25,4 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest
+          pytest -m "not benchmark"
